@@ -7,7 +7,7 @@
                     class="col-12 col-sm-6 col-lg-3">
                     <div class="single-footer-widget">
                         <div class="footer-logo mb-30">
-                            <h1 style="color: greenyellow;">GARDEN CENTER</h1>
+                            <a href="index.php"><h1 style="color: greenyellow;">Electronics Shop</h1></a>
                             <p>Welcome to our gardening company website! Our aim is to help you create a beautiful and thriving garden that you can enjoy all year round. Our website is designed to provide you with easy access to all the information and products you need to get started. When you first visit our website, you will see a drop-down menu at the top of the page with two items: Plants and Gardening. These options will help you navigate to the products you need. If you select Plants, you will be taken to a second drop-down menu that will show you a range of options to choose from, including Roses, Hedging, and Shrubs.</p>
                         </div>
                     </div>
@@ -62,14 +62,14 @@
 
     if (loginBtn !== null) {
         loginBtn.addEventListener('click', function () {
-            window.location.href = 'old_files/Login.html';
+            window.location.href = 'login.php';
         });
     }
 
     if (logoutBtn !== null) {
         logoutBtn.addEventListener('click', function () {
             sessionStorage.removeItem('userid');
-            window.location.href = 'old_files/Login.html';
+            window.location.href = 'login.php';
         });
     }
     $(document).ready(function () {

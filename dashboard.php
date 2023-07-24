@@ -4,14 +4,14 @@ session_start();
 
 // Check if the user is not logged in, redirect to the login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("Location: login_test.php");
+    header("Location: login.php");
     exit();
 }
 
 // Logout user and destroy the session on logout button click
 if (isset($_POST["logout"])) {
     session_destroy();
-    header("Location: login_test.php");
+    header("Location: login.php");
     exit();
 }
 ?>

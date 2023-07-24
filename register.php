@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>React Form with PHP and MySQLi</title>
+  <title>Sign Up</title>
   <!-- React CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.development.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
   <!-- Babel CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <link rel="icon" href="img/flat/004-smart-tv.png">
   <!-- Bootstrap CDN (optional for styling) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
     <style>
         body {
-            background-image: url('bgimage/22.avif');
+            background-image: url('bgimage/desk.jpg');
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -117,6 +118,7 @@
             phone: '',
             password: '',
           });
+          window.location.href = 'index.php';
         })
         .catch(error => console.error('Error:', error));
       };
@@ -128,7 +130,7 @@
                   <div className="col-md-6 py-5 bg-primary text-white text-center ">
                     <div className=" ">
                       <div className="card-body">
-                        <img src="http://www.ansonika.com/mavia/img/registration_bg.svg"/>
+                        <img src="img/flat/004-smart-tv.png"/>
                         <h6 className="py-3">Garden Company Registration Form</h6>
                         <p>The Garden Company website registration page is where users can create an account and gain
                           access to a variety of features, including the ability to purchase products, save their favorite
@@ -136,8 +138,8 @@
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
-                    <form onSubmit={handleSubmit} className="container mt-4">
+                  <div className="col-md-6 bg-gray">
+                    <form onSubmit={handleSubmit} className="container mt-4 bg-white p-5">
                       <div className="mb-3">
                         <label htmlFor="name" className="form-label">Name:</label>
                         <input

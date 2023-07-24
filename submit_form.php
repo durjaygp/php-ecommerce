@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($stmt->execute()) {
         // Form submitted successfully
         echo "Form submitted successfully!";
-        header("Location: index.php");
+        //header("Location: index.php");
 
     } else {
         // Error occurred while submitting the form

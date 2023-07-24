@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Gardening Center</title>
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/flat/004-smart-tv.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,7 +15,7 @@
 <div class="preloader d-flex align-items-center justify-content-center">
     <div class="preloader-circle"></div>
     <div class="preloader-img">
-        <img src="img/core-img/leaf.png" alt="">
+        <img src="img/flat/001-smartphone.png" alt="">
     </div>
 </div>
 
@@ -49,7 +49,7 @@
             <div class="container">
                 <nav class="classy-navbar justify-content-between" id="alazeaNav">
 
-                    <h1 style="color: greenyellow;">GARDEN CENTER</h1>
+                    <a href="index.php"><h1 style="color: greenyellow;">Electronics Shop</h1></a>
 
                     <div class="classy-navbar-toggler">
                         <span class="navbarToggler"><span></span><span></span><span></span></span>
