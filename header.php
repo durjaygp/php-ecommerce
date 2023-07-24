@@ -35,7 +35,7 @@
                             <div class="login" id="loginpermission">
                             </div>
                             <div class="register">
-                                <a href="Register.php"><i class="fa fa-user" aria-hidden="true"></i><span>Register</span></a>
+                                <a href="register.php"><i class="fa fa-user" aria-hidden="true"></i><span>Register</span></a>
                             </div>
                         </div>
                     </div>

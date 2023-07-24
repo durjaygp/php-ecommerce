@@ -59,7 +59,7 @@
 
                         <div class="single-service-area d-flex align-items-center wow fadeInUp" data-wow-delay="100ms">
                             <div class="service-icon mr-30">
-                                <img src="img/core-img/s1.png" alt="">
+                                <img src="img/flat/001-smartphone.png " alt="">
                             </div>
                             <div class="service-content">
                                 <h5>Plants Care</h5>
@@ -69,7 +69,7 @@
 
                         <div class="single-service-area d-flex align-items-center wow fadeInUp" data-wow-delay="300ms">
                             <div class="service-icon mr-30">
-                                <img src="img/core-img/s2.png" alt="">
+                                <img src="img/flat/002-heaphones.png" alt="">
                             </div>
                             <div class="service-content">
                                 <h5>Pressure Washing</h5>
@@ -79,7 +79,7 @@
 
                         <div class="single-service-area d-flex align-items-center wow fadeInUp" data-wow-delay="500ms">
                             <div class="service-icon mr-30">
-                                <img src="img/core-img/s3.png" alt="">
+                                <img src="img/flat/003-computer.png" alt="">
                             </div>
                             <div class="service-content">
                                 <h5>Tree Service &amp; Trimming</h5>
@@ -93,7 +93,7 @@
                 <div class="col-12 col-lg-6">
                     <div class="alazea-video-area bg-overlay mb-100">
                         <img src="img/bg-img/23.jpg" alt="">
-                        <a href="http://www.youtube.com/watch?v=7HKoqNJtMTQ" class="video-icon">
+                        <a href="https://www.youtube.com/watch?v=dR8nqJzrnSg" class="video-icon">
                             <i class="fa fa-play" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -125,9 +125,8 @@
         </div>
         </div>
 
-
         <div class="subscribe-side-thumb wow fadeInUp" data-wow-delay="500ms">
-            <img class="first-img" src="img/core-img/leaf.png" alt="">
+            <img class="first-img" src="img/flat/004-smart-tv.png" alt="">
         </div>
     </section>
 

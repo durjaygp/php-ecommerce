@@ -55,7 +55,7 @@
       };
 
       const validatePhone = (phone) => {
-        const phoneRegex = /^[0-9]+$/;
+        const phoneRegex = /^\d{10}$/;
         return phoneRegex.test(phone);
       };
 
@@ -79,7 +79,7 @@
             errors.email = validateEmail(value) ? '' : 'Please enter a valid email address.';
             break;
           case 'phone':
-            errors.phone = validatePhone(value) ? '' : 'Phone should only contain numbers.';
+            errors.phone = validatePhone(value) ? '' : 'Please insert your 10 digit Mobile Number.';
             break;
           case 'password':
             errors.password = validatePassword(value) ? '' : 'Password should be at least 6 characters long.';
