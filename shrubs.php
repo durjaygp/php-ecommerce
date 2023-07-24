@@ -241,14 +241,14 @@
 
         if (loginBtn !== null) {
             loginBtn.addEventListener('click', function () {
-                window.location.href = 'old_files/Login.html';
+                window.location.href = 'Login-3.php';
             });
         }
 
         if (logoutBtn !== null) {
             logoutBtn.addEventListener('click', function () {
                 sessionStorage.removeItem('userid');
-                window.location.href = 'old_files/Login.html';
+                window.location.href = 'Login-3.php';
             });
         }
         $(document).ready(function () {

@@ -125,9 +125,9 @@
 
       return (
 
-              <div className="container">
-                <div className="row">
-                  <div className="col-md-6 py-5 bg-primary text-white text-center ">
+              <div className="container mt-5">
+                <div className="row mt-10">
+                  <div className="col-md-5 mt-10 py-5 bg-primary text-white text-center ">
                     <div className=" ">
                       <div className="card-body">
                         <img src="img/flat/004-smart-tv.png"/>
@@ -138,63 +138,72 @@
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6 bg-gray">
-                    <form onSubmit={handleSubmit} className="container mt-4 bg-white p-5">
-                      <div className="mb-3">
-                        <label htmlFor="name" className="form-label">Name:</label>
-                        <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                className={`form-control ${formErrors.name ? 'is-invalid' : ''}`}
-                        />
-                        {formErrors.name && <div className="invalid-feedback">{formErrors.name}</div>}
+                  <div className="col-md-7 mt-10">
+                      <div className="card">
+                          <div className="card-header">
+                              <h2>Register Here</h2>
+                          </div>
+                          <div className="card-body">
+                              <form onSubmit={handleSubmit} className="container">
+                                  <div className="mb-3">
+                                      <label htmlFor="name" className="form-label">Name:</label>
+                                      <input
+                                          type="text"
+                                          id="name"
+                                          name="name"
+                                          value={formData.name}
+                                          onChange={handleInputChange}
+                                          className={`form-control ${formErrors.name ? 'is-invalid' : ''}`}
+                                      required/>
+                                      {formErrors.name && <div className="invalid-feedback">{formErrors.name}</div>}
+                                  </div>
+
+                                  <div className="mb-3">
+                                      <label htmlFor="email" className="form-label">Email:</label>
+                                      <input
+                                          type="text"
+                                          id="email"
+                                          name="email"
+                                          value={formData.email}
+                                          onChange={handleInputChange}
+                                          className={`form-control ${formErrors.email ? 'is-invalid' : ''}`}
+                                     required />
+                                      {formErrors.email && <div className="invalid-feedback">{formErrors.email}</div>}
+                                  </div>
+
+                                  <div className="mb-3">
+                                      <label htmlFor="phone" className="form-label">Phone:</label>
+                                      <input
+                                          type="text"
+                                          id="phone"
+                                          name="phone"
+                                          value={formData.phone}
+                                          onChange={handleInputChange}
+                                          className={`form-control ${formErrors.phone ? 'is-invalid' : ''}`}
+                                      required/>
+                                      {formErrors.phone && <div className="invalid-feedback">{formErrors.phone}</div>}
+                                  </div>
+
+                                  <div className="mb-3">
+                                      <label htmlFor="password" className="form-label">Password:</label>
+                                      <input
+                                          type="password"
+                                          id="password"
+                                          name="password"
+                                          value={formData.password}
+                                          onChange={handleInputChange}
+                                          className={`form-control ${formErrors.password ? 'is-invalid' : ''}`}
+                                      required/>
+                                      {formErrors.password && <div className="invalid-feedback">{formErrors.password}</div>}
+                                  </div>
+
+                                  <button type="submit" className="btn btn-primary">Submit</button>
+                              </form>
+                          </div>
                       </div>
 
-                      <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email:</label>
-                        <input
-                                type="text"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                className={`form-control ${formErrors.email ? 'is-invalid' : ''}`}
-                        />
-                        {formErrors.email && <div className="invalid-feedback">{formErrors.email}</div>}
-                      </div>
-
-                      <div className="mb-3">
-                        <label htmlFor="phone" className="form-label">Phone:</label>
-                        <input
-                                type="text"
-                                id="phone"
-                                name="phone"
-                                value={formData.phone}
-                                onChange={handleInputChange}
-                                className={`form-control ${formErrors.phone ? 'is-invalid' : ''}`}
-                        />
-                        {formErrors.phone && <div className="invalid-feedback">{formErrors.phone}</div>}
-                      </div>
-
-                      <div className="mb-3">
-                        <label htmlFor="password" className="form-label">Password:</label>
-                        <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleInputChange}
-                                className={`form-control ${formErrors.password ? 'is-invalid' : ''}`}
-                        />
-                        {formErrors.password && <div className="invalid-feedback">{formErrors.password}</div>}
-                      </div>
-
-                      <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
                   </div>
+
                 </div>
               </div>
       );

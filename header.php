@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,11 +37,20 @@
 
                         <div class="top-header-meta d-flex">
 
-                            <div class="login" id="loginpermission">
-                            </div>
-                            <div class="register">
-                                <a href="register.php"><i class="fa fa-user" aria-hidden="true"></i><span>Register</span></a>
-                            </div>
+                            <?php if (isset($_SESSION['id'])) { ?>
+                                <!-- Show the user's data in the header menu -->
+                                <li class="text-white h5">Welcome, <?php echo $_SESSION['phone']; ?></li>
+                                <div class="login">
+                                    <li><a href="logout.php" class="btn btn-danger ml-2">Logout</a></li>
+                                </div>
+                            <?php } else { ?>
+                                <div class="login">
+                                    <a href="login.php"><i class="fa fa-user"></i><span>Login</span></a>
+                                </div>
+                                <div class="register">
+                                    <a href="register.php"><i class="fa fa-user" aria-hidden="true"></i><span>Register</span></a>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -83,7 +97,6 @@
                                         <li><a href="watering.php">Watering</a>
                                         </li>
                                     </ul>
-
                                 <li><a href="contact.php">Contact</a></li>
                             </ul>
                         </div>

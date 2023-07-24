@@ -132,59 +132,59 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
 
 
-<section class="testimonial py-5" id="testimonial">
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-4 py-5 bg-primary text-white text-center ">
-                <div class=" ">
-                    <div class="card-body">
-                        <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
-                        <h2 class="py-3">Login</h2>
-                        <p>This is the login page for the Garden Company. You will be able
-                            to login with the account you have created in the registration Page
-                            along with doing a Captcha for security purposes.
+    <section class="testimonial py-5" id="testimonial">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-4 py-5 bg-primary text-white text-center ">
+                    <div class=" ">
+                        <div class="card-body">
+                            <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
+                            <h2 class="py-3">Login</h2>
+                            <p>This is the login page for the Garden Company. You will be able
+                                to login with the account you have created in the registration Page
+                                along with doing a Captcha for security purposes.
 
-                        </p>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-8 py-5 border">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Login</h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                            <div class="mb-3">
-                                <label for="phone">Phone Number</label>
-                                <input type="text" name="phone" id="phone" class="form-control" required>
-                                <span class="text-danger"><?php echo $phone_err; ?></span>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" required>
-                                <span class="text-danger"><?php echo $password_err; ?></span>
-                            </div>
-                            <button type="submit" name="submit" class="btn btn-primary">Login</button>
-                        </form>
+                <div class="col-md-8 py-5 border">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Login</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                <div class="mb-3">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" name="phone" id="phone" class="form-control" required>
+                                    <span class="text-danger"><?php echo $phone_err; ?></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control" required>
+                                    <span class="text-danger"><?php echo $password_err; ?></span>
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    <div class="container mt-2">
-        <div class="alert alert-success" id="success-message" role="alert" style="display: none;"></div>
-        <div class="alert alert-danger" id="error-message" role="alert" style="display: none;"></div>
-    </div>
+        <div class="container mt-2">
+            <div class="alert alert-success" id="success-message" role="alert" style="display: none;"></div>
+            <div class="alert alert-danger" id="error-message" role="alert" style="display: none;"></div>
+        </div>
 
-</section>
+    </section>
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 
 </body>
 
