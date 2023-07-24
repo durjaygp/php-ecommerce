@@ -33,7 +33,7 @@
                                 <div class="login" id="loginpermission">
                                 </div>
                                 <div class="register">
-                                    <a href="../Register.html"><i class="fa fa-user" aria-hidden="true"></i><span>Register</span></a>
+                                    <a href="register.php"><i class="fa fa-user" aria-hidden="true"></i><span>Register</span></a>
                                 </div>
                             </div>
                         </div>
@@ -62,12 +62,12 @@
                             <div class="classynav">
                                 <ul>
                                     <li><a href="index.php">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="about.php">About</a></li>
                                     <li><a href="#">Plants</a>
                                         <ul class="dropdown">
-                                            <li><a href="Roses.html">Roses</a></li>
-                                            <li><a href="hedging.html">Hedging</a></li>
-                                            <li><a href="shrubs.html">Shrubs</a>
+                                            <li><a href="Roses.php">Roses</a></li>
+                                            <li><a href="hedging.php">Hedging</a></li>
+                                            <li><a href="shrubs.php">Shrubs</a>
 
                                             </li>
 
@@ -75,12 +75,12 @@
                                     </li>
                                     <li><a href="#">Gardening</a>
                                         <ul class="dropdown">
-                                            <li><a href="Seeds.html">Seeds</a></li>
-                                            <li><a href="Compost.html">Compost</a></li>
-                                            <li><a href="Fertilizers.html">Fertilizers</a></li>
-                                            <li><a href="Watering.html">Watering</a></li>
+                                            <li><a href="Seeds.php">Seeds</a></li>
+                                            <li><a href="Compost.php">Compost</a></li>
+                                            <li><a href="Fertilizers.php">Fertilizers</a></li>
+                                            <li><a href="Watering.php">Watering</a></li>
                                         </ul>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="contact.php">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -224,9 +224,10 @@
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/plugins/Nav.js"></script>
     <script src="js/active.js"></script>
+
     <script>
         var sessionStorage = window.sessionStorage;
-        var user = sessionStorage.getItem("userid");
+        var user = sessionStorage.getItem("id");
 
         if (user !== null && user !== undefined) {
             document.getElementById('loginpermission').innerHTML = `
@@ -242,23 +243,23 @@
 
         if (loginBtn !== null) {
             loginBtn.addEventListener('click', function () {
-                window.location.href = 'old_files/Login.html';
+                window.location.href = 'login.php';
             });
         }
 
         if (logoutBtn !== null) {
             logoutBtn.addEventListener('click', function () {
-                sessionStorage.removeItem('userid');
-                window.location.href = 'old_files/Login.html';
+                sessionStorage.removeItem('id');
+                window.location.href = 'login.php';
             });
         }
         $(document).ready(function () {
             $('.add-to-cart-btn').click(function () {
-                var user = sessionStorage.getItem("userid");
+                var user = sessionStorage.getItem("id");
                 if (user !== null && user !== undefined) {
                     var product_name = $(this).closest('.single-product-area').find('p').text();
                     var product_price = $(this).closest('.single-product-area').find('h6').text();
-                    var user = sessionStorage.getItem("userid");
+                    var user = sessionStorage.getItem("id");
                     var data = {
                         'product_name': product_name,
                         'product_price': product_price,
@@ -266,7 +267,7 @@
                     };
 
                     $.ajax({
-                        url: 'http://localhost/Project/AddToCart.php',
+                        url: 'http://localhost/php-ecommerce/AddToCart.php',
                         type: 'POST',
                         contentType: 'application/json',
                         dataType: 'json',
@@ -292,7 +293,7 @@
                         icon: 'error',
                         title: 'Product Purchase',
                         text: 'Please login before purchasing our product.',
-                        footer: '<a href="../Login.html">Click Here To Login</a>'
+                        footer: '<a href="login.php">Click Here To Login</a>'
 
                     });
                 }
