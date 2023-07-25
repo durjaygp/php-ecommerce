@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$connection = mysqli_connect('localhost', 'root', '', 'test_ajax_php');
+$connection = mysqli_connect('localhost', 'root', '', 'live_react');
 if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
