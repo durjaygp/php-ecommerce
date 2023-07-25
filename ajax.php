@@ -87,125 +87,164 @@
         </div>
     </div>
 </footer>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/jquery/jquery-2.2.4.min.js"></script>
 <script src="js/bootstrap/popper.min.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/plugins/plugins.js"></script>
 <script src="js/active.js"></script>
+
 <script>
     // Function to fetch and populate the category dropdown
     function populateCategories() {
-        var categorySelect = document.getElementById("categorySelect");
-        // AJAX request to get categories data
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var categories = JSON.parse(xhr.responseText);
-                    categories.forEach(function(category) {
-                        var option = document.createElement("option");
-                        option.text = category.name;
-                        option.value = category.id;
-                        categorySelect.add(option);
-                    });
-                } else {
-                    console.error("Error: " + xhr.status);
-                }
+        var categorySelect = $("#categorySelect");
+
+        $.ajax({
+            url: "ajax/get_categories.php",
+            type: "GET",
+            dataType: "json",
+            success: function(categories) {
+                $.each(categories, function(index, category) {
+                    var option = $("<option>")
+                        .text(category.name)
+                        .val(category.id);
+                    categorySelect.append(option);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: " + status);
             }
-        };
-        xhr.open("GET", "ajax/get_categories.php", true);
-        xhr.send();
+        });
     }
 
     // Function to fetch and populate the brand dropdown based on the selected category
     function getBrandsByCategory() {
-        var categorySelect = document.getElementById("categorySelect");
-        var brandSelect = document.getElementById("brandSelect");
-        var categoryId = categorySelect.value;
-        // Clear existing brands
-        brandSelect.innerHTML = "<option value=''>Select Brand</option>";
+        var categorySelect = $("#categorySelect");
+        var brandSelect = $("#brandSelect");
+        var categoryId = categorySelect.val();
+        brandSelect.html("<option value=''>Select Brand</option>");
 
         if (categoryId !== "") {
-            // AJAX request to get brands data by category
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        var brands = JSON.parse(xhr.responseText);
-                        brands.forEach(function(brand) {
-                            var option = document.createElement("option");
-                            option.text = brand.name;
-                            option.value = brand.id;
-                            brandSelect.add(option);
-                        });
-                    } else {
-                        console.error("Error: " + xhr.status);
-                    }
+            $.ajax({
+                url: "ajax/get_brands.php?category_id=" + categoryId,
+                type: "GET",
+                dataType: "json",
+                success: function(brands) {
+                    $.each(brands, function(index, brand) {
+                        var option = $("<option>")
+                            .text(brand.name)
+                            .val(brand.id);
+                        brandSelect.append(option);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error: " + status);
                 }
-            };
-            xhr.open("GET", "ajax/get_brands.php?category_id=" + categoryId, true);
-            xhr.send();
+            });
         }
     }
 
     // Function to fetch and populate the products table based on the selected brand
-
-
     function getProductsByBrand() {
-        var brandSelect = document.getElementById("brandSelect");
-        var brandId = brandSelect.value;
+        var brandSelect = $("#brandSelect");
+        var brandId = brandSelect.val();
 
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var productsData = JSON.parse(xhr.responseText);
-                    var printHereDiv = document.getElementById("print-here");
-                    printHereDiv.innerHTML = ""; // Clear existing data
+        $.ajax({
+            url: "ajax/get_products.php?brand_id=" + brandId,
+            type: "GET",
+            dataType: "json",
+            success: function(productsData) {
+                var printHereDiv = $("#print-here");
+                printHereDiv.empty(); // Clear existing data
 
-                    // Loop through productsData and print each product
-                    productsData.forEach(function (product) {
-                        var productDiv = document.createElement("div");
-                        productDiv.classList.add("col-4", "col-sm-6", "col-lg-4");
+                $.each(productsData, function(index, product) {
+                    var productDiv = $("<div>")
+                        .addClass("col-4 col-sm-6 col-lg-4");
 
-                        var productImgDiv = document.createElement("div");
-                        productImgDiv.classList.add("product-img", "shadow");
+                    var productImgDiv = $("<div>")
+                        .addClass("product-img shadow");
 
-                        var productImgLink = document.createElement("a");
-                        var productImg = document.createElement("img");
-                        productImg.src = product.product_image; // Assuming your product data has an 'image_url' property
+                    var productImgLink = $("<a>")
+                        .attr("href", product.product_image); // Assuming your product data has an 'image_url' property
 
-                        var productInfoDiv = document.createElement("div");
-                        productInfoDiv.classList.add("product-info", "mt-15", "text-center");
+                    var productImg = $("<img>")
+                        .attr("src", product.product_image); // Assuming your product data has an 'image_url' property
 
-                        var productLink = document.createElement("a");
-                        var productName = document.createElement("h6");
-                        productName.textContent = product.name;
-                        var productPrice = document.createElement("p");
-                        productPrice.textContent = "£" + product.product_price;
+                    var productInfoDiv = $("<div>")
+                        .addClass("product-info mt-15 text-center");
 
-                        productImgLink.appendChild(productImg);
-                        productImgDiv.appendChild(productImgLink);
-                        productInfoDiv.appendChild(productLink);
-                        productLink.appendChild(productName);
-                        productLink.appendChild(productPrice);
-                        productDiv.appendChild(productImgDiv);
-                        productDiv.appendChild(productInfoDiv);
+                    var productLink = $("<a>")
+                        .attr("href", "#");
 
-                        printHereDiv.appendChild(productDiv);
+                    var productName = $("<h6>")
+                        .text(product.name);
+
+                    var productPrice = $("<p>")
+                        .text("£" + product.product_price);
+
+                    <!-- ... Your previous code ... -->
+
+                    var orderButton = $("<button>")
+                        .addClass("btn btn-primary")
+                        .text("Order"); // Set the button text
+
+                    orderButton.on("click", function() {
+                        // Check if the user is logged in
+                        // You can use a global variable or a function to check the login status
+                        var loggedin = checkLoginStatus(); // Assuming this function checks the login status
+
+                        if (loggedin) {
+                            // If the user is logged in, save the order data
+                            saveOrderToDatabase(product.name, product.product_price);
+                        } else {
+                            // If the user is not logged in, redirect to the login page
+                            window.location.href = "login.php"; // Replace "login.php" with your actual login page URL
+                        }
                     });
-                } else {
-                    console.error("Error: " + xhr.status);
-                }
+
+                    function saveOrderToDatabase(productName, productPrice) {
+                        var userPhone = prompt("Please enter your phone number:"); // Ask for user's phone number
+
+                        // Perform an AJAX request to save the order data
+                        $.ajax({
+                            url: "ajax/save_order.php",
+                            type: "POST",
+                            data: {
+                                product_name: productName,
+                                product_price: productPrice,
+                                user_phone: userPhone
+                            },
+                            success: function(response) {
+                                alert("Order saved successfully!");
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("Error: " + status);
+                            }
+                        });
+                    }
+
+                    <!-- ... Your previous code ... -->
+
+
+                    productImgLink.append(productImg);
+                    productImgDiv.append(productImgLink);
+                    productLink.append(productName, productPrice);
+                    productInfoDiv.append(productLink, orderButton);
+                    productDiv.append(productImgDiv, productInfoDiv);
+
+                    printHereDiv.append(productDiv);
+                });
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: " + status);
             }
-        };
-        xhr.open("GET", "ajax/get_products.php?brand_id=" + brandId, true);
-        xhr.send();
+        });
     }
 
     // Call the populateCategories function to load categories data on page load
-    populateCategories();
+    $(document).ready(function() {
+        populateCategories();
+    });
 </script>
 
 

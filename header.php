@@ -11,7 +11,7 @@ session_start();
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Gardening Center</title>
+    <title>Electronics Shop</title>
     <link rel="icon" href="img/flat/004-smart-tv.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
@@ -83,23 +83,23 @@ session_start();
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="about.php">About</a></li>
                                 <li><a href="ajax.php">Ajax</a></li>
-                                <li><a href="#">Plants</a>
-                                    <ul class="dropdown">
-                                        <li><a href="roses.php">Roses</a></li>
-                                        <li><a href="hedging.php">Hadging</a></li>
-                                        <li><a href="shrubs.php">Shurbs</a>
-                                        </li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="#">Gardening</a>
-                                    <ul class="dropdown">
-                                        <li><a href="seeds.php">Seeds</a></li>
-                                        <li><a href="compost.php">Compost</a></li>
-                                        <li><a href="fertilizers.php">Fertilizers</a>
-                                        <li><a href="watering.php">Watering</a>
-                                        </li>
-                                    </ul>
+<!--                                <li><a href="#">Plants</a>-->
+<!--                                    <ul class="dropdown">-->
+<!--                                        <li><a href="roses.php">Roses</a></li>-->
+<!--                                        <li><a href="hedging.php">Hadging</a></li>-->
+<!--                                        <li><a href="shrubs.php">Shurbs</a>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
+<!---->
+<!--                                <li><a href="#">Gardening</a>-->
+<!--                                    <ul class="dropdown">-->
+<!--                                        <li><a href="seeds.php">Seeds</a></li>-->
+<!--                                        <li><a href="compost.php">Compost</a></li>-->
+<!--                                        <li><a href="fertilizers.php">Fertilizers</a>-->
+<!--                                        <li><a href="watering.php">Watering</a></li>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
                                 <li><a href="contact.php">Contact</a></li>
                             </ul>
                         </div>
