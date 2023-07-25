@@ -62,8 +62,8 @@
                                 <img src="img/flat/001-smartphone.png " alt="">
                             </div>
                             <div class="service-content">
-                                <h5>Plants Care</h5>
-                                <p>Plant care refers to the set of practices and activities aimed at maintaining the health and well-being of plants.</p>
+                                <h5>Expert Guidance</h5>
+                                <p>Our team of knowledgeable and passionate experts is always on hand to assist you. Whether you have questions about a product, need advice on choosing the right device, or require technical support.</p>
                             </div>
                         </div>
 
@@ -72,8 +72,8 @@
                                 <img src="img/flat/002-heaphones.png" alt="">
                             </div>
                             <div class="service-content">
-                                <h5>Pressure Washing</h5>
-                                <p>Pressure washing can be used on many different surfaces, including concrete, wood, brick, and vinyl siding. </p>
+                                <h5>Personalized Attention</h5>
+                                <p> We believe that each customer is unique, and so are their requirements. Our dedicated staff takes the time to understand your preferences and priorities.</p>
                             </div>
                         </div>
 
@@ -82,8 +82,8 @@
                                 <img src="img/flat/003-computer.png" alt="">
                             </div>
                             <div class="service-content">
-                                <h5>Tree Service &amp; Trimming</h5>
-                                <p>Tree service and trimming refer to the maintenance and care of trees to promote their health, safety, and aesthetic value.</p>
+                                <h5>Quality Assurance</h5>
+                                <p>We are committed to delivering products of the highest quality. Each item we offer undergoes rigorous testing and quality checks.</p>
                             </div>
                         </div>
 
@@ -91,8 +91,8 @@
                 </div>
 
                 <div class="col-12 col-lg-6">
-                    <div class="alazea-video-area bg-overlay mb-100">
-                        <img src="img/bg-img/23.jpg" alt="">
+                    <div class="alazea-video-area bg-overlay mt-30 mb-100">
+                        <img src="bgimage/mac.jpg" alt="">
                         <a href="https://www.youtube.com/watch?v=dR8nqJzrnSg" class="video-icon">
                             <i class="fa fa-play" aria-hidden="true"></i>
                         </a>

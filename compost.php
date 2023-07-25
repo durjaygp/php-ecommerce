@@ -98,28 +98,30 @@
         <div class="col-12 col-md-8 col-lg-12 mt-5">
             <div class="shop-products-area">
                 <div class="row">
-
-                    <div class="col-10 col-sm-6 col-lg-4 ">
-                        <div class="single-product-area mb-50">
-                            <div class="product-img shadow">
-                                <a><img src="img/compost_1_960x960.jpg" class="rounded" alt=""></a>
-                                <div class="product-tag">
+                    <div id="print-here">
+                        <div class="col-10 col-sm-6 col-lg-4 ">
+                            <div class="single-product-area mb-50">
+                                <div class="product-img shadow">
+                                    <a><img src="img/compost_1_960x960.jpg" class="rounded" alt=""></a>
+                                    <div class="product-tag">
+                                    </div>
+                                    <div class="product-meta d-flex">
+                                        <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
+                                        <a href="#" class="add-to-cart-btn">Add to cart</a>
+                                        <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
+                                    </div>
                                 </div>
-                                <div class="product-meta d-flex">
-                                    <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                    <a href="#" class="add-to-cart-btn">Add to cart</a>
-                                    <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                                </div>
-                            </div>
 
-                            <div class="product-info mt-15 text-center">
-                                <a href="#">
-                                    <h6>Green Acres Compost.</h6>
-                                    <p>£20.50</p>
-                                </a>
+                                <div class="product-info mt-15 text-center">
+                                    <a href="#">
+                                        <h6>Green Acres Compost.</h6>
+                                        <p>£20.50</p>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
+
 
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="single-product-area mb-50">
@@ -231,81 +233,7 @@
     <script src="js/bootstrap/bootstrap.min.js"></script>
     <script src="js/plugins/Nav.js"></script>
     <script src="js/active.js"></script>
-    <script>
-        var sessionStorage = window.sessionStorage;
-        var user = sessionStorage.getItem("userid");
 
-        if (user !== null && user !== undefined) {
-            document.getElementById('loginpermission').innerHTML = `
-        <a id="logout-btn" style="cursor: pointer;"><i class="fa fa-user" aria-hidden="true"></i><span>Logout</span></a>`;
-        } else {
-            document.getElementById('loginpermission').innerHTML = `
-        <a id="login-btn" style="cursor: pointer;"><i class="fa fa-user" aria-hidden="true"></i><span>Login</span></a>`;
-        }
-
-        var loginBtn = document.getElementById('login-btn');
-        var logoutBtn = document.getElementById('logout-btn');
-
-
-        if (loginBtn !== null) {
-            loginBtn.addEventListener('click', function () {
-                window.location.href = 'Login-3.php';
-            });
-        }
-
-        if (logoutBtn !== null) {
-            logoutBtn.addEventListener('click', function () {
-                sessionStorage.removeItem('userid');
-                window.location.href = 'Login-3.php';
-            });
-        }
-        $(document).ready(function () {
-            $('.add-to-cart-btn').click(function () {
-                var user = sessionStorage.getItem("userid");
-                if (user !== null && user !== undefined) {
-                    var product_name = $(this).closest('.single-product-area').find('p').text();
-                    var product_price = $(this).closest('.single-product-area').find('h6').text();
-                    var user = sessionStorage.getItem("userid");
-                    var data = {
-                        'product_name': product_name,
-                        'product_price': product_price,
-                        'user_id': user
-                    };
-
-                    $.ajax({
-                        url: 'http://localhost/Project/AddToCart.php',
-                        type: 'POST',
-                        contentType: 'application/json',
-                        dataType: 'json',
-                        data: JSON.stringify(data),
-                        success: function (response) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Product Purchase',
-                                text: response.message,
-                            });
-                        },
-                        error: function (error) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Product Purchase',
-                                text: error.error,
-                            });
-                        }
-                    });
-
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Product Purchase',
-                        text: 'Please login before purchasing our product.',
-                        footer: '<a href="../Login.html">Click Here To Login</a>'
-
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

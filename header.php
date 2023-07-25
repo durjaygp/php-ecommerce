@@ -13,6 +13,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Gardening Center</title>
     <link rel="icon" href="img/flat/004-smart-tv.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -80,6 +82,7 @@ session_start();
                             <ul>
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="about.php">About</a></li>
+                                <li><a href="ajax.php">Ajax</a></li>
                                 <li><a href="#">Plants</a>
                                     <ul class="dropdown">
                                         <li><a href="roses.php">Roses</a></li>

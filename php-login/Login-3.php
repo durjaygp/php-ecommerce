@@ -111,10 +111,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 
     <title>Login</title>
-    <link rel="icon" href="img/flat/004-smart-tv.png">
+    <link rel="icon" href="../img/flat/004-smart-tv.png">
     <style>
         body {
-            background-image: url('bgimage/desk.jpg');
+            background-image: url('desk.jpg');
             background-size: cover;
             background-repeat: no-repeat;
         }

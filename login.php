@@ -4,7 +4,7 @@ session_start();
 
 // Check if the user is already logged in, redirect to the dashboard if logged in
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("Location: dashboard.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             $_SESSION["phone"] = $phone;
 
                             // Redirect to the dashboard
-                            header("Location: dashboard.php");
+                            header("Location: index.php");
                             exit();
                         } else {
                             // Display an error message if the password is incorrect

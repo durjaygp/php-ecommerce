@@ -1,5 +1,5 @@
 
-<footer class="footer-area bg-img" style="background-image: url(img/bg-img/3.jpg);">
+<footer class="footer-area bg-img" style="background-image: url(bgimage/tv-bg.jpg);">
     <div class="main-footer-area">
         <div class="container">
             <div class="row">
@@ -27,8 +27,7 @@
                     <div class="copywrite-text">
                         <p>&copy;
                             Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved by Garden
-                            Center
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved by Electronic Shop
 
                         </p>
                     </div>
@@ -44,81 +43,6 @@
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/plugins/plugins.js"></script>
 <script src="js/active.js"></script>
-<script>
-    var sessionStorage = window.sessionStorage;
-    var user = sessionStorage.getItem("userid");
-
-    if (user !== null && user !== undefined) {
-        document.getElementById('loginpermission').innerHTML = `
-            <a id="logout-btn" style="cursor: pointer;"><i class="fa fa-user" aria-hidden="true"></i><span>Logout</span></a>`;
-    } else {
-        document.getElementById('loginpermission').innerHTML = `
-            <a id="login-btn" style="cursor: pointer;"><i class="fa fa-user" aria-hidden="true"></i><span>Login</span></a>`;
-    }
-
-    var loginBtn = document.getElementById('login-btn');
-    var logoutBtn = document.getElementById('logout-btn');
-
-
-    if (loginBtn !== null) {
-        loginBtn.addEventListener('click', function () {
-            window.location.href = 'login.php';
-        });
-    }
-
-    if (logoutBtn !== null) {
-        logoutBtn.addEventListener('click', function () {
-            sessionStorage.removeItem('userid');
-            window.location.href = 'login.php';
-        });
-    }
-    $(document).ready(function () {
-        $('.add-to-cart-btn').click(function () {
-            var user = sessionStorage.getItem("userid");
-            if (user !== null && user !== undefined) {
-                var product_name = $(this).closest('.single-product-area').find('p').text();
-                var product_price = $(this).closest('.single-product-area').find('h6').text();
-                var user = sessionStorage.getItem("userid");
-                var data = {
-                    'product_name': product_name,
-                    'product_price': product_price,
-                    'user_id': user
-                };
-
-                $.ajax({
-                    url: 'http://localhost/Project/AddToCart.php',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    dataType: 'json',
-                    data: JSON.stringify(data),
-                    success: function (response) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Product Purchase',
-                            text: response.message,
-                        });
-                    },
-                    error: function (error) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Product Purchase',
-                            text: error.error,
-                        });
-                    }
-                });
-
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Product Purchase',
-                    text: 'Please login before purchasing our product.',
-                    footer: '<a href="../Login.html">Click Here To Login</a>'
-
-                });
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
