@@ -98,7 +98,25 @@
         <div class="col-12 col-md-8 col-lg-12 mt-5">
             <div class="shop-products-area">
                 <div class="row">
-                    <div id="print-here">
+                    <?php
+                    include "config.php";
+                    $query = "SELECT * FROM products";
+                    $result = mysqli_query($conn, $query);
+
+                    // Check if the query was successful
+                    if (!$result) {
+                        die("Query failed: " . mysqli_error($conn));
+                    }
+                    ?>
+                        <?php
+                        // Step 3: Use a loop to iterate through the result set
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        // Get the product details from the current row
+                        $productName = $row['product_name'];
+                        $productPrice = $row['product_price'];
+                        $productImage = $row['product_image'];
+                        ?>
+
                         <div class="col-10 col-sm-6 col-lg-4 ">
                             <div class="single-product-area mb-50">
                                 <div class="product-img shadow">
@@ -120,8 +138,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
+                            <?php
+                        } // End of the while loop
+                        ?>
 
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="single-product-area mb-50">
