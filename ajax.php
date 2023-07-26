@@ -188,6 +188,14 @@
                         .addClass("btn btn-primary")
                         .text("Order"); // Set the button text
 
+                    function checkLoginStatus(){
+                        usrid = '<?=$_SESSION['id'];?>';
+                        // alert(usrid);
+                        if (usrid=="")
+                            return true;
+                        else return false;
+                    }
+
                     orderButton.on("click", function() {
                         // Check if the user is logged in
                         // You can use a global variable or a function to check the login status
@@ -223,7 +231,6 @@
                         });
                     }
 
-                    <!-- ... Your previous code ... -->
 
 
                     productImgLink.append(productImg);
@@ -249,4 +256,5 @@
 
 
 </body>
+
 </html>
