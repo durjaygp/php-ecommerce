@@ -70,10 +70,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             // Password is correct, start a new session
                             session_start();
 
+                            $query = "SELECT * FROM users WHERE id = ' $id' LIMIT 1";
+                            $result = mysqli_query($conn, $query);
+                            $user = mysqli_fetch_assoc($result);
+
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["phone"] = $phone;
+                            $_SESSION["name"] = $user['name'];
+                            $_SESSION["email"] = $user['email'];
 
 
                             // Redirect to the dashboard

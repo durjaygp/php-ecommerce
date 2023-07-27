@@ -3,12 +3,15 @@
     <div class="main-footer-area">
         <div class="container">
             <div class="row">
-                <div class="top-breadcrumb-area  d-flex align-items-center justify-content-center" <div
+                <div class="top-breadcrumb-area  d-flex align-items-center justify-content-center" >
+                <div
                     class="col-12 col-sm-6 col-lg-3">
                     <div class="single-footer-widget">
                         <div class="footer-logo mb-30">
                             <a href="index.php"><h1 style="color: greenyellow;">Electronics Shop</h1></a>
-                            <p>Welcome to our gardening company website! Our aim is to help you create a beautiful and thriving garden that you can enjoy all year round. Our website is designed to provide you with easy access to all the information and products you need to get started. When you first visit our website, you will see a drop-down menu at the top of the page with two items: Plants and Gardening. These options will help you navigate to the products you need. If you select Plants, you will be taken to a second drop-down menu that will show you a range of options to choose from, including Roses, Hedging, and Shrubs.</p>
+                            <p>Welcome to our Electronics Shop website! At Our Electronics Shop, we are more than just a retailer of cutting-edge technology and gadgets; we are a passionate team of tech enthusiasts dedicated to providing you with the latest and greatest in the world of electronics. Our commitment to delivering top-notch products and exceptional customer service has made us a trusted destination for all your electronic needs. Founded with a vision to bridge the gap between people and technology, Our Electronics Shop aims to make the latest advancements in electronics accessible to everyone. Whether you're a tech-savvy individual or just starting your digital journey, we cater to all levels of expertise, providing a personalized shopping experience that ensures you find the perfect solution for your requirements.
+
+</p>
                         </div>
                     </div>
                 </div </div>

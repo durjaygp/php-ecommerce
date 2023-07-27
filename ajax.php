@@ -183,7 +183,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     <a href="${product.product_image}">
                     <img src="${product.product_image}"></a></div>
                     <div class="product-info mt-15 text-center">
-                    <a href="#"><h6>${product.name}</h6><p>£${product.product_price}</p></a>
+                    <a href="#"><h6>${product.name}</h6><p>£ ${product.product_price}</p></a>
                     <button class="btn btn-primary text-white mb-10 order-btn" data-id="${product.id}">Order</button>
                     </div>
                     </div>`;

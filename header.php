@@ -50,7 +50,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
                             <?php if (isset($_SESSION['id'])) { ?>
                                 <!-- Show the user's data in the header menu -->
-                                <li class="text-white h5">Your In Phone Number is <?php echo $_SESSION['phone']; ?></li>
+                                <li class="text-white h5">Welcome, Mr. <?php echo $_SESSION['name']; ?></li>
                                 <div class="login">
                                     <li><a href="logout.php" class="btn btn-danger ml-2">Logout</a></li>
                                 </div>
