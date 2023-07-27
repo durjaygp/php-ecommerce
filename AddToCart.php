@@ -10,12 +10,12 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 $product_name = $data['product_name'];
 $product_price = $data['product_price'];
-$user_id = $data['user_id'];
+$user_id = $data['id'];
 $errors = array();
 
 // Connect to the database using PDO
-$dsn = 'mysql:host=localhost;dbname=x3r77';
-$username = '';
+$dsn = 'mysql:host=localhost;dbname=live_react';
+$username = 'root';
 $password = '';
 $options = array(
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -24,10 +24,10 @@ $options = array(
 try {
     $pdo = new PDO($dsn, $username, $password, $options);
     if($product_name != null && $product_price!= null && $user_id != null){
-    $stmt = $pdo->prepare("INSERT INTO orders (OrderedItem,Orderprice,User_ID) VALUES (:OrderedItem, :Orderprice, :User_ID)");
+    $stmt = $pdo->prepare("INSERT INTO orders (product_name,product_price,User_ID) VALUES (:product_name, :product_price, :User_ID)");
     $stmt->execute(array(
-        ':OrderedItem' => $product_name,
-        ':Orderprice' => $product_price,
+        ':product_name' => $product_name,
+        ':product_price' => $product_price,
         ':User_ID' => $user_id
     ));
     echo json_encode(array(

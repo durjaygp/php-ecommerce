@@ -1,94 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Gardening Center</title>
-    <link rel="icon" href="img/core-img/favicon.ico">
-    <link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-circle"></div>
-        <div class="preloader-img">
-            <img src="img/core-img/leaf.png" alt="">
-        </div>
-    </div>
-
-    <header class="header-area">
-
-        <div class="top-header-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="top-header-content d-flex align-items-center justify-content-between">
-                            <div class="top-header-meta">
-                            </div>
-                            <div class="top-header-meta d-flex">
-                                <div class="login" id="loginpermission">
-                                </div>
-                                <div class="register">
-                                    <a href="../Register.html"><i class="fa fa-user" aria-hidden="true"></i><span>Register</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="alazea-main-menu">
-            <div class="classy-nav-container breakpoint-off">
-                <div class="container">
-                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
-
-                        <h1 style="color: greenyellow;">GARDEN CENTER</h1>
-
-                        <div class="classy-navbar-toggler">
-                            <span class="navbarToggler"><span></span><span></span><span></span></span>
-                        </div>
-
-                        <div class="classy-menu">
-
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
-
-                            <div class="classynav">
-                                <ul>
-                                    <li><a href="index.php">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="#">Plants</a>
-                                        <ul class="dropdown">
-                                            <li><a href="Roses.html">Roses</a></li>
-                                            <li><a href="Hedging.html">Hedging</a></li>
-                                            <li><a href="shrubs.html">Shrubs</a>
-
-                                            </li>
-
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Gardening</a>
-                                        <ul class="dropdown">
-                                            <li><a href="Seeds.html">Seeds</a></li>
-                                            <li><a href="Compost.html">Compost</a></li>
-                                            <li><a href="Fertilizers.html">Fertilizers</a></li>
-                                            <li><a href="Watering.html">Watering</a></li>
-                                        </ul>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+<?php include"header.php";?>
 
     <div class="breadcrumb-area">
         <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
@@ -227,7 +137,7 @@
     <script src="js/active.js"></script>
     <script>
         var sessionStorage = window.sessionStorage;
-        var user = sessionStorage.getItem("userid");
+        var user = sessionStorage.getItem("id");
 
         if (user !== null && user !== undefined) {
             document.getElementById('loginpermission').innerHTML = `
@@ -243,19 +153,20 @@
 
         if (loginBtn !== null) {
             loginBtn.addEventListener('click', function () {
-                window.location.href = 'Login-3.php';
+                window.location.href = 'login.php';
             });
         }
 
         if (logoutBtn !== null) {
             logoutBtn.addEventListener('click', function () {
-                sessionStorage.removeItem('userid');
-                window.location.href = 'Login-3.php';
+                sessionStorage.removeItem('id');
+                window.location.href = 'login.php';
             });
         }
+        
         $(document).ready(function () {
             $('.add-to-cart-btn').click(function () {
-                var user = sessionStorage.getItem("userid");
+                var user = sessionStorage.getItem("id");
                 if (user !== null && user !== undefined) {
                     var product_name = $(this).closest('.single-product-area').find('p').text();
                     var product_price = $(this).closest('.single-product-area').find('h6').text();
@@ -267,7 +178,7 @@
                     };
 
                     $.ajax({
-                        url: 'http://localhost/Project/AddToCart.php',
+                        url: 'AddToCart.php',
                         type: 'POST',
                         contentType: 'application/json',
                         dataType: 'json',
@@ -293,7 +204,7 @@
                         icon: 'error',
                         title: 'Product Purchase',
                         text: 'Please login before purchasing our product.',
-                        footer: '<a href="../Login.html">Click Here To Login</a>'
+                        footer: '<a href="login.php">Click Here To Login</a>'
 
                     });
                 }

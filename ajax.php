@@ -93,6 +93,8 @@
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/plugins/plugins.js"></script>
 <script src="js/active.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <script>
     // Function to fetch and populate the category dropdown
@@ -188,13 +190,7 @@
                         .addClass("btn btn-primary")
                         .text("Order"); // Set the button text
 
-                    function checkLoginStatus(){
-                        usrid = '<?=$_SESSION['id'];?>';
-                        // alert(usrid);
-                        if (usrid=="")
-                            return true;
-                        else return false;
-                    }
+                
 
                     orderButton.on("click", function() {
                         // Check if the user is logged in
@@ -253,7 +249,6 @@
         populateCategories();
     });
 </script>
-
 
 </body>
 

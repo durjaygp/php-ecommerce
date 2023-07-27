@@ -1,11 +1,12 @@
 <?php
-// Initialize the session
 session_start();
 
-// Check if the user is already logged in, redirect to the dashboard if logged in
+// Check if the user is logged in
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("Location: index.php");
-    exit();
+    // Return the login status as a JSON response
+    echo json_encode(array("loggedIn" => true));
+} else {
+    echo json_encode(array("loggedIn" => false));
 }
 
 // Include database configuration
