@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Assuming you have a database connection already established
 $connection = mysqli_connect('localhost', 'root', '', 'live_react');
 if (!$connection) {
@@ -8,37 +9,59 @@ if (!$connection) {
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Get the data sent via AJAX
-    $productName = $_POST["product_name"];
-    $productPrice = $_POST["product_price"];
-    $userPhone = $_POST["user_phone"];
+    try{
+        $product_id = $_POST["product_id"];
 
-    // Validate the data (you can add more validation if needed)
-    if (empty($productName) || empty($productPrice) || empty($userPhone)) {
-        http_response_code(400); // Bad request status code
-        echo "Error: Incomplete data provided.";
-        exit;
+        if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+            $userPhone = $_SESSION["phone"];
+            $customerName = $_SESSION["name"];
+            $emailID = $_SESSION["email"];
+
+           // customer name, email ID, phone number,
+        }else{
+            header("Location: login.php");
+        }
+
+        // Validate the data (you can add more validation if needed)
+        if (empty($product_id) || empty($userPhone)) {
+            http_response_code(400); // Bad request status code
+            echo "Error: Incomplete data provided.";
+            exit;
+        }
+
+        $query = "SELECT * FROM products WHERE id = '$product_id' LIMIT 1";
+        $result = mysqli_query($connection, $query);
+        $product = mysqli_fetch_assoc($result);
+
+
+        // Sanitize the data (optional, but good practice to prevent SQL injection)
+        $productName = $product['name'];
+        $productPrice = $product['product_price'];
+        $customerName = $_SESSION["name"];
+        $emailID = $_SESSION["email"];
+
+
+        // Save the order data to the database (replace this with your actual database logic)
+       // product_name product_price customer_name email_id user_phone ordered_item
+        $query = "INSERT INTO orders (product_name, product_price, customer_name, email_id, user_phone) VALUES ('$productName',$productPrice,'$customerName','$emailID','$userPhone')";
+        $result = mysqli_query($connection, $query);
+        if ($result) {
+            echo "order save";
+            exit;
+            // Order saved successfully
+            http_response_code(200); // Success status code
+            echo "Order saved successfully!";
+        } else {
+            echo "order not save";
+            exit;
+            // Error saving the order
+            http_response_code(500); // Internal Server Error status code
+            echo "Error: Unable to save the order.";
+        }
+    }catch(Exception $e){
+        return $e->getMessage();
     }
 
-    // Sanitize the data (optional, but good practice to prevent SQL injection)
-    $productName = htmlspecialchars($productName);
-    $productPrice = floatval($productPrice);
-    $userPhone = htmlspecialchars($userPhone);
-
-    // Save the order data to the database (replace this with your actual database logic)
-    // Assuming you have a table named "orders" with columns "product_name", "product_price", and "user_phone"
-    $query = "INSERT INTO orders (product_name, product_price, user_phone) VALUES (?, ?, ?)";
-    $stmt = $connection->prepare($query);
-    $stmt->bind_param("sds", $productName, $productPrice, $userPhone);
-
-    if ($stmt->execute()) {
-        // Order saved successfully
-        http_response_code(200); // Success status code
-        echo "Order saved successfully!";
-    } else {
-        // Error saving the order
-        http_response_code(500); // Internal Server Error status code
-        echo "Error: Unable to save the order.";
-    }
 
     // Close the database connection (if you have not done it already)
     $connection->close();

@@ -133,6 +133,7 @@
                         <img src="img/flat/004-smart-tv.png"/>
                         <h6 className="py-3">Registration Form</h6>
                         <p>At Electronics Shop, we take pride in offering the latest and greatest in electronic gadgets and technology. Our login page provides seamless access to a world of cutting-edge electronics and exceptional services. Whether you're a tech enthusiast, a gadget lover, or simply looking to upgrade your devices, you've come to the right place!</p>
+                          <a href="index.php" className="btn btn-primary">Home Page</a>
                       </div>
                     </div>
                   </div>

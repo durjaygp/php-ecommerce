@@ -1,8 +1,10 @@
 <?php include "header.php";
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     // Return the login status as a JSON response
+    $login = true;
     json_encode(array("loggedIn" => true));
 } else {
+    $login = false;
     json_encode(array("loggedIn" => false));
 }
 
@@ -103,7 +105,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/plugins/plugins.js"></script>
 <script src="js/active.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 <script>
@@ -157,6 +159,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     }
 
     // Function to fetch and populate the products table based on the selected brand
+
+
+
+
+
+
     function getProductsByBrand() {
         var brandSelect = $("#brandSelect");
         var brandId = brandSelect.val();
@@ -170,61 +178,17 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                 printHereDiv.empty(); // Clear existing data
 
                 $.each(productsData, function(index, product) {
-                    var productDiv = $("<div>")
-                        .addClass("col-4 col-sm-6 col-lg-4");
+                    var product = `<div class="col-4 col-sm-6 col-lg-4 mb-3">
+                    <div class="product-img shadow">
+                    <a href="${product.product_image}">
+                    <img src="${product.product_image}"></a></div>
+                    <div class="product-info mt-15 text-center">
+                    <a href="#"><h6>${product.name}</h6><p>£${product.product_price}</p></a>
+                    <button class="btn btn-primary text-white mb-10 order-btn" data-id="${product.id}">Order</button>
+                    </div>
+                    </div>`;
 
-                    var productImgDiv = $("<div>")
-                        .addClass("product-img shadow");
-
-                    var productImgLink = $("<a>")
-                        .attr("href", product.product_image); // Assuming your product data has an 'image_url' property
-
-                    var productImg = $("<img>")
-                        .attr("src", product.product_image); // Assuming your product data has an 'image_url' property
-
-                    var productInfoDiv = $("<div>")
-                        .addClass("product-info mt-15 text-center");
-
-                    var productLink = $("<a>")
-                        .attr("href", "#");
-
-                    var productName = $("<h6>")
-                        .text(product.name);
-
-                    var productPrice = $("<p>")
-                        .text("£" + product.product_price);
-
-                    <!-- ... Your previous code ... -->
-
-                    var orderButton = $("<button>")
-                        .addClass("btn btn-primary text-white mb-10")
-                        .text("Order"); // Set the button text
-
-
-                    orderButton.on("click", function() {
-                        // Check if the user is logged in
-                        // You can use a global variable or a function to check the login status
-                        var loggedin = checkLoginStatus(); // Assuming this function checks the login status
-
-                        if (loggedin) {
-                            // If the user is logged in, save the order data
-                            saveOrderToDatabase(product.name, product.product_price);
-                        } else {
-                            // If the user is not logged in, redirect to the login page
-                            window.location.href = "login.php"; // Replace "login.php" with your actual login page URL
-                        }
-                    });
-
-
-
-
-                    productImgLink.append(productImg);
-                    productImgDiv.append(productImgLink);
-                    productLink.append(productName, productPrice);
-                    productInfoDiv.append(productLink, orderButton);
-                    productDiv.append(productImgDiv, productInfoDiv);
-
-                    printHereDiv.append(productDiv);
+                    printHereDiv.append(product);
                 });
             },
             error: function(xhr, status, error) {
@@ -233,26 +197,31 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         });
     }
 
-    function saveOrderToDatabase(productName, productPrice) {
-        var userPhone = prompt("Please enter your phone number:"); // Ask for user's phone number
+    $(document).on('click','.order-btn',function(){
+        let login = "<?=$login;?>";
+        if(!login){
+            swal("", "Please Login", "warning");
+            window.location.href = "login.php";
+            return false;
+        }
 
-        // Perform an AJAX request to save the order data
+        let product_id = $(this).data('id');
         $.ajax({
             url: "ajax/save_order.php",
             type: "POST",
             data: {
-                product_name: productName,
-                product_price: productPrice,
-                user_phone: userPhone
+                product_id: product_id,
             },
             success: function(response) {
-                alert("Order saved successfully!");
+                swal("", "Order Save successfully!", "success");
             },
             error: function(xhr, status, error) {
-                console.error("Error: " + status);
+                console.log(status);
+                // console.error("Error: " + status);
             }
         });
-    }
+    });
+
 
     function checkLoginStatus() {
         var loggedin = false;
@@ -266,6 +235,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                 loggedin = response.loggedin;
             },
             error: function(xhr, status, error) {
+                console.log(status);
                 console.error("Error: " + status);
             }
         });

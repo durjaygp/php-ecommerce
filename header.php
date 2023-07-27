@@ -2,7 +2,11 @@
 session_start();
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     // Return the login status as a JSON response
+
      json_encode(array("loggedIn" => true));
+    $name = isset($_SESSION["name"]) ? $_SESSION["name"] : "";
+    $phone = isset($_SESSION["phone"]) ? $_SESSION["phone"] : "";
+    $email = isset($_SESSION["email"]) ? $_SESSION["email"] : "";
 } else {
      json_encode(array("loggedIn" => false));
 }
@@ -46,7 +50,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 
                             <?php if (isset($_SESSION['id'])) { ?>
                                 <!-- Show the user's data in the header menu -->
-                                <li class="text-white h5">Welcome, <?php echo $_SESSION['phone']; ?></li>
+                                <li class="text-white h5">Your In Phone Number is <?php echo $_SESSION['phone']; ?></li>
                                 <div class="login">
                                     <li><a href="logout.php" class="btn btn-danger ml-2">Logout</a></li>
                                 </div>
