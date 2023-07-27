@@ -4,9 +4,9 @@ session_start();
 // Check if the user is logged in
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     // Return the login status as a JSON response
-    echo json_encode(array("loggedIn" => true));
+     json_encode(array("loggedIn" => true));
 } else {
-    echo json_encode(array("loggedIn" => false));
+     json_encode(array("loggedIn" => false));
 }
 
 // Include database configuration
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             $_SESSION["phone"] = $phone;
 
                             // Redirect to the dashboard
-                            header("Location: index.php");
+                            header("Location: ajax.php");
                             exit();
                         } else {
                             // Display an error message if the password is incorrect
@@ -141,9 +141,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="card-body">
                         <img src="http://www.ansonika.com/mavia/img/registration_bg.svg" style="width:30%">
                         <h2 class="py-3">Login</h2>
-                        <p>This is the login page for the Garden Company. You will be able
-                            to login with the account you have created in the registration Page
-                            along with doing a Captcha for security purposes.
+                        <p>
+                            <p class="font-bold">Welcome to Electronics Shop - Your One-Stop Electronics Shop!</p>
+
+                            <p>At Electronics Shop, we take pride in offering the latest and greatest in electronic gadgets and technology. Our login page provides seamless access to a world of cutting-edge electronics and exceptional services. Whether you're a tech enthusiast, a gadget lover, or simply looking to upgrade your devices, you've come to the right place!</p>
 
                         </p>
                     </div>
@@ -167,6 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                                 <span class="text-danger"><?php echo $password_err; ?></span>
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                            <a href="register.php" class="btn btn-outline-success m-2">Sign Up</a>
                         </form>
                     </div>
                 </div>

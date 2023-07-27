@@ -1,6 +1,11 @@
 <?php
 session_start();
-
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    // Return the login status as a JSON response
+     json_encode(array("loggedIn" => true));
+} else {
+     json_encode(array("loggedIn" => false));
+}
 ?>
 
 <!DOCTYPE html>

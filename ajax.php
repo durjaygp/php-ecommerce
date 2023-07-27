@@ -1,4 +1,14 @@
-<?php include "header.php";?>
+<?php include "header.php";
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    // Return the login status as a JSON response
+    json_encode(array("loggedIn" => true));
+} else {
+    json_encode(array("loggedIn" => false));
+}
+
+
+
+?>
 
 <div class="breadcrumb-area">
     <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center"
@@ -187,10 +197,9 @@
                     <!-- ... Your previous code ... -->
 
                     var orderButton = $("<button>")
-                        .addClass("btn btn-primary")
+                        .addClass("btn btn-primary text-white mb-10")
                         .text("Order"); // Set the button text
 
-                
 
                     orderButton.on("click", function() {
                         // Check if the user is logged in
@@ -206,26 +215,6 @@
                         }
                     });
 
-                    function saveOrderToDatabase(productName, productPrice) {
-                        var userPhone = prompt("Please enter your phone number:"); // Ask for user's phone number
-
-                        // Perform an AJAX request to save the order data
-                        $.ajax({
-                            url: "ajax/save_order.php",
-                            type: "POST",
-                            data: {
-                                product_name: productName,
-                                product_price: productPrice,
-                                user_phone: userPhone
-                            },
-                            success: function(response) {
-                                alert("Order saved successfully!");
-                            },
-                            error: function(xhr, status, error) {
-                                console.error("Error: " + status);
-                            }
-                        });
-                    }
 
 
 
@@ -244,12 +233,49 @@
         });
     }
 
+    function saveOrderToDatabase(productName, productPrice) {
+        var userPhone = prompt("Please enter your phone number:"); // Ask for user's phone number
+
+        // Perform an AJAX request to save the order data
+        $.ajax({
+            url: "ajax/save_order.php",
+            type: "POST",
+            data: {
+                product_name: productName,
+                product_price: productPrice,
+                user_phone: userPhone
+            },
+            success: function(response) {
+                alert("Order saved successfully!");
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: " + status);
+            }
+        });
+    }
+
+    function checkLoginStatus() {
+        var loggedin = false;
+
+        $.ajax({
+            url: "login.php", // Replace with the actual PHP file path
+            type: "GET",
+            dataType: "json",
+            async: false, // Set to false to ensure the value is available before continuing
+            success: function(response) {
+                loggedin = response.loggedin;
+            },
+            error: function(xhr, status, error) {
+                console.error("Error: " + status);
+            }
+        });
+
+        return loggedin;
+    }
+
+
     // Call the populateCategories function to load categories data on page load
     $(document).ready(function() {
         populateCategories();
     });
 </script>
-
-</body>
-
-</html>
