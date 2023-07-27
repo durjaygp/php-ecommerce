@@ -3,8 +3,7 @@
     <div class="main-footer-area">
         <div class="container">
             <div class="row">
-                <div class="top-breadcrumb-area  d-flex align-items-center justify-content-center" >
-                <div
+                <div class="top-breadcrumb-area  d-flex align-items-center justify-content-center" <div
                     class="col-12 col-sm-6 col-lg-3">
                     <div class="single-footer-widget">
                         <div class="footer-logo mb-30">
